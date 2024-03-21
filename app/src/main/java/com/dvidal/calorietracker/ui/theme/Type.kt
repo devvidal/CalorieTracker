@@ -1,4 +1,4 @@
-package com.dvidal.myapplication.ui.theme
+package com.dvidal.calorietracker.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

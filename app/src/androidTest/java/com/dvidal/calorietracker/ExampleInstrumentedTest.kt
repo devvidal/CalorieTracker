@@ -1,4 +1,4 @@
-package com.dvidal.myapplication
+package com.dvidal.calorietracker
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,4 +1,4 @@
-package com.dvidal.myapplication
+package com.dvidal.calorietracker
 
 import org.junit.Test
 
