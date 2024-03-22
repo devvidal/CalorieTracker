@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import com.dvidal.core.constants.ConstantsPreferences
 import com.dvidal.core.domain.DefaultPreferences
 import com.dvidal.core.domain.preferences.Preferences
+import com.dvidal.core.domain.usecase.FilterOutDigits
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,5 +29,11 @@ object AppModule {
     @Singleton
     fun providePreferences(sharedPreferences: SharedPreferences): Preferences {
         return DefaultPreferences(sharedPreferences)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFilterOutDigits(): FilterOutDigits {
+        return FilterOutDigits()
     }
 }

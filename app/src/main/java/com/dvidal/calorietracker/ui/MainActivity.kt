@@ -18,6 +18,7 @@ import com.dvidal.onboarding_presentation.age.AgeScreen
 import com.dvidal.onboarding_presentation.gender.GenderScreen
 import com.dvidal.onboarding_presentation.goaltype.GoalTypeScreen
 import com.dvidal.onboarding_presentation.height.HeightScreen
+import com.dvidal.onboarding_presentation.nutrientgoal.NutrientGoalScreen
 import com.dvidal.onboarding_presentation.weight.WeightScreen
 import com.dvidal.onboarding_presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -74,7 +75,12 @@ class MainActivity : ComponentActivity() {
                                 onNavigate = navController::navigate
                             )
                         }
-                        composable(Route.NUTRIENT_GOAL){}
+                        composable(Route.NUTRIENT_GOAL){
+                            NutrientGoalScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
 
                         composable(Route.TRACKER_OVERVIEW){}
                         composable(Route.SEARCH){}
