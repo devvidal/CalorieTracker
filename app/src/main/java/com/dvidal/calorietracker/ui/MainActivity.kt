@@ -13,8 +13,10 @@ import androidx.navigation.compose.rememberNavController
 import com.dvidal.calorietracker.ui.navigation.navigate
 import com.dvidal.calorietracker.ui.theme.CalorieTrackerTheme
 import com.dvidal.core.navigation.Route
+import com.dvidal.onboarding_presentation.activitylevel.ActivityLevelScreen
 import com.dvidal.onboarding_presentation.age.AgeScreen
 import com.dvidal.onboarding_presentation.gender.GenderScreen
+import com.dvidal.onboarding_presentation.goaltype.GoalTypeScreen
 import com.dvidal.onboarding_presentation.height.HeightScreen
 import com.dvidal.onboarding_presentation.weight.WeightScreen
 import com.dvidal.onboarding_presentation.welcome.WelcomeScreen
@@ -62,9 +64,17 @@ class MainActivity : ComponentActivity() {
                                 onNavigate = navController::navigate
                             )
                         }
-                        composable(Route.ACTIVITY){}
+                        composable(Route.ACTIVITY_LEVEL){
+                            ActivityLevelScreen(
+                                onNavigate = navController::navigate
+                            )
+                        }
+                        composable(Route.GOAL_TYPE){
+                            GoalTypeScreen(
+                                onNavigate = navController::navigate
+                            )
+                        }
                         composable(Route.NUTRIENT_GOAL){}
-                        composable(Route.GOAL){}
 
                         composable(Route.TRACKER_OVERVIEW){}
                         composable(Route.SEARCH){}
