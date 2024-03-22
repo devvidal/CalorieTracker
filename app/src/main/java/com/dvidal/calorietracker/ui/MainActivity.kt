@@ -15,6 +15,8 @@ import com.dvidal.calorietracker.ui.theme.CalorieTrackerTheme
 import com.dvidal.core.navigation.Route
 import com.dvidal.onboarding_presentation.age.AgeScreen
 import com.dvidal.onboarding_presentation.gender.GenderScreen
+import com.dvidal.onboarding_presentation.height.HeightScreen
+import com.dvidal.onboarding_presentation.weight.WeightScreen
 import com.dvidal.onboarding_presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,8 +50,19 @@ class MainActivity : ComponentActivity() {
                         composable(Route.GENDER){
                             GenderScreen(onNavigate = navController::navigate)
                         }
-                        composable(Route.HEIGHT){}
-                        composable(Route.WEIGHT){}
+                        composable(Route.HEIGHT){
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
+                        composable(Route.WEIGHT){
+                            WeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
+                        composable(Route.ACTIVITY){}
                         composable(Route.NUTRIENT_GOAL){}
                         composable(Route.GOAL){}
 
