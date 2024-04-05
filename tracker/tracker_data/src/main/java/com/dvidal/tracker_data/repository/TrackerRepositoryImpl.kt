@@ -49,7 +49,6 @@ class TrackerRepositoryImpl(
         dao.deleteTrackedFood(food.toTrackedFoodEntity())
     }
 
-    @SuppressLint("NewApi")
     override fun getFoodsForDate(localDate: LocalDate): Flow<List<TrackedFood>> {
         return dao.getFoodsForDate(
             day = localDate.dayOfMonth,

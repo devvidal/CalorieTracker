@@ -1,4 +1,4 @@
-package com.dvidal.core.domain
+package com.dvidal.core.data.preferences
 
 import android.content.SharedPreferences
 import com.dvidal.core.constants.ConstantsPreferences
@@ -64,6 +64,19 @@ class DefaultPreferences(
         sharedPrefs.edit()
             .putFloat(ConstantsPreferences.KEY_FAT_RATIO, ratio)
             .apply()
+    }
+
+    override fun saveShouldShowOnboarding(shouldShow: Boolean) {
+        sharedPrefs.edit()
+            .putBoolean(ConstantsPreferences.KEY_SHOULD_SHOW_ONBOARDING, shouldShow)
+            .apply()
+    }
+
+    override fun loadShouldShowOnboarding(): Boolean {
+        return sharedPrefs.getBoolean(
+            ConstantsPreferences.KEY_SHOULD_SHOW_ONBOARDING,
+            true
+        )
     }
 
     override fun loadUserInfo(): UserInfo {

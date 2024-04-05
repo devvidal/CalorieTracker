@@ -13,4 +13,5 @@ object ConstantsPreferences {
     const val KEY_CARB_RATIO = "key_carb_ratio"
     const val KEY_PROTEIN_RATIO = "key_protein_ratio"
     const val KEY_FAT_RATIO = "key_fat_ratio"
+    const val KEY_SHOULD_SHOW_ONBOARDING = "key_should_show_onboarding"
 }

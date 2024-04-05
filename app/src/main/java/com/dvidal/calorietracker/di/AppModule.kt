@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import com.dvidal.core.constants.ConstantsPreferences
-import com.dvidal.core.domain.DefaultPreferences
+import com.dvidal.core.data.preferences.DefaultPreferences
 import com.dvidal.core.domain.preferences.Preferences
 import com.dvidal.core.domain.usecase.FilterOutDigits
 import dagger.Module

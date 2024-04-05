@@ -8,7 +8,6 @@ import com.dvidal.tracker_domain.model.MealType
 import com.dvidal.tracker_domain.model.TrackedFood
 import java.time.LocalDate
 
-@SuppressLint("NewApi")
 fun TrackedFoodEntity.toTrackedFood(): TrackedFood {
     return TrackedFood(
         name = name,
@@ -24,7 +23,6 @@ fun TrackedFoodEntity.toTrackedFood(): TrackedFood {
     )
 }
 
-@SuppressLint("NewApi")
 fun TrackedFood.toTrackedFoodEntity(): TrackedFoodEntity {
     return TrackedFoodEntity(
         name = name,
