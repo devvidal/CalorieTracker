@@ -1,11 +1,10 @@
 package com.dvidal.tracker_presentation.trackeroverview
 
-import android.annotation.SuppressLint
 import com.dvidal.tracker_domain.model.TrackedFood
 import java.time.LocalDate
 
 data class TrackerOverviewState(
-    val totalCarbs: Int? = 0,
+    val totalCarbs: Int = 0,
     val totalProteins: Int = 0,
     val totalFat: Int = 0,
     val totalCalories: Int = 0,

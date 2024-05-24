@@ -21,6 +21,8 @@ import com.dvidal.onboarding_presentation.height.HeightScreen
 import com.dvidal.onboarding_presentation.nutrientgoal.NutrientGoalScreen
 import com.dvidal.onboarding_presentation.weight.WeightScreen
 import com.dvidal.onboarding_presentation.welcome.WelcomeScreen
+import com.dvidal.tracker_presentation.trackeroverview.TrackerOverviewScreen
+import com.dvidal.tracker_presentation.trackeroverview.TrackerOverviewState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -82,7 +84,11 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        composable(Route.TRACKER_OVERVIEW){}
+                        composable(Route.TRACKER_OVERVIEW){
+                            TrackerOverviewScreen(
+                                onNavigate = navController::navigate
+                            )
+                        }
                         composable(Route.SEARCH){}
                     }.run { it }
                 }

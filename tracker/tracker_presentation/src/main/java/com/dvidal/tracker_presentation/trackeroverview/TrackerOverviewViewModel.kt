@@ -1,7 +1,5 @@
 package com.dvidal.tracker_presentation.trackeroverview
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -36,6 +34,12 @@ class TrackerOverviewViewModel @Inject constructor(
 
     init {
         preferences.saveShouldShowOnboarding(false)
+    }
+
+    override fun onCleared() {
+        getFoodsForDateJob?.cancel()
+        getFoodsForDateJob = null
+        super.onCleared()
     }
 
     fun onEvent(event: TrackerOverviewEvent) {

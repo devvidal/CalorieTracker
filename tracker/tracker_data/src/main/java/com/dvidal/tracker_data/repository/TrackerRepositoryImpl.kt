@@ -1,12 +1,9 @@
 package com.dvidal.tracker_data.repository
 
-import android.annotation.SuppressLint
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.dvidal.tracker_data.local.TrackerDao
 import com.dvidal.tracker_data.mapper.toTrackableFood
-import com.dvidal.tracker_data.mapper.toTrackedFoodEntity
 import com.dvidal.tracker_data.mapper.toTrackedFood
+import com.dvidal.tracker_data.mapper.toTrackedFoodEntity
 import com.dvidal.tracker_data.remote.OpenFoodApi
 import com.dvidal.tracker_domain.model.TrackableFood
 import com.dvidal.tracker_domain.model.TrackedFood

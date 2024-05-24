@@ -1,4 +1,4 @@
-package com.dvidal.calorietracker.ui.theme
+package com.dvidal.core_ui
 
 import androidx.compose.ui.graphics.Color
 
