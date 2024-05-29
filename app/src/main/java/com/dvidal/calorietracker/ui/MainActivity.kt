@@ -7,11 +7,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.dvidal.calorietracker.ui.navigation.navigate
 import com.dvidal.calorietracker.ui.theme.CalorieTrackerTheme
+import com.dvidal.core.domain.preferences.Preferences
 import com.dvidal.core.navigation.Route
 import com.dvidal.onboarding_presentation.activitylevel.ActivityLevelScreen
 import com.dvidal.onboarding_presentation.age.AgeScreen
@@ -21,15 +24,21 @@ import com.dvidal.onboarding_presentation.height.HeightScreen
 import com.dvidal.onboarding_presentation.nutrientgoal.NutrientGoalScreen
 import com.dvidal.onboarding_presentation.weight.WeightScreen
 import com.dvidal.onboarding_presentation.welcome.WelcomeScreen
+import com.dvidal.tracker_presentation.search.SearchScreen
 import com.dvidal.tracker_presentation.trackeroverview.TrackerOverviewScreen
-import com.dvidal.tracker_presentation.trackeroverview.TrackerOverviewState
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    @Inject
+    lateinit var preferences: Preferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val shouldShowOnboarding = preferences.loadShouldShowOnboarding()
+
         setContent {
             CalorieTrackerTheme {
                 val navController = rememberNavController()
@@ -41,7 +50,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     NavHost(
                         navController = navController,
-                        startDestination = Route.WELCOME
+                        startDestination = if (shouldShowOnboarding) Route.WELCOME else Route.TRACKER_OVERVIEW
                     ) {
                         composable(Route.WELCOME){
                             WelcomeScreen(onNavigate = navController::navigate)
@@ -89,7 +98,39 @@ class MainActivity : ComponentActivity() {
                                 onNavigate = navController::navigate
                             )
                         }
-                        composable(Route.SEARCH){}
+                        composable(
+                            route = Route.SEARCH + "/{mealName}/{dayOfMonth}/{month}/{year}",
+                            arguments = listOf(
+                                navArgument("mealName") {
+                                    type = NavType.StringType
+                                },
+                                navArgument("dayOfMonth") {
+                                    type = NavType.IntType
+                                },
+                                navArgument("month") {
+                                    type = NavType.IntType
+                                },
+                                navArgument("year") {
+                                    type = NavType.IntType
+                                }
+                            )
+                        ){
+                            val mealName = requireNotNull(it.arguments?.getString("mealName"))
+                            val dayOfMonth = requireNotNull(it.arguments?.getInt("dayOfMonth"))
+                            val month = requireNotNull(it.arguments?.getInt("month"))
+                            val year = requireNotNull(it.arguments?.getInt("year"))
+
+                            SearchScreen(
+                                scaffoldState = scaffoldState,
+                                mealName = mealName,
+                                dayOfMonth = dayOfMonth,
+                                month = month,
+                                year = year,
+                                onNavigateUp = {
+                                    navController.navigateUp()
+                                }
+                            )
+                        }
                     }.run { it }
                 }
             }
