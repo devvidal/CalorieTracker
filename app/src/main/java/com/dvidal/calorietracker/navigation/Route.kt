@@ -1,4 +1,4 @@
-package com.dvidal.core.navigation
+package com.dvidal.calorietracker.navigation
 
 object Route {
 

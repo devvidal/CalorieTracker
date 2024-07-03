@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.dvidal.core.domain.preferences.Preferences
-import com.dvidal.core.navigation.Route
 
 @HiltViewModel
 class AgeViewModel @Inject constructor(
@@ -42,6 +41,6 @@ class AgeViewModel @Inject constructor(
             return@launch
         }
         preferences.saveAge(ageNumber)
-        _uiEvent.send(UiEvent.Navigate(Route.HEIGHT))
+        _uiEvent.send(UiEvent.Success)
     }
 }

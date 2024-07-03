@@ -29,12 +29,12 @@ import com.dvidal.onboarding_presentation.components.SelectableButton
 @Composable
 fun GenderScreen(
     viewModel: GenderViewModel = hiltViewModel(),
-    onNavigate: (UiEvent.Navigate) -> Unit
+    onNavigate: (UiEvent.Success) -> Unit
 ) {
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when(event) {
-                is UiEvent.Navigate -> onNavigate.invoke(event)
+                is UiEvent.Success -> onNavigate.invoke(event)
                 else -> Unit
             }
         }

@@ -6,7 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dvidal.core.R
-import com.dvidal.core.domain.usecase.FilterOutDigits
 import com.dvidal.core.util.UiEvent
 import com.dvidal.core.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,12 +14,10 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.dvidal.core.domain.preferences.Preferences
-import com.dvidal.core.navigation.Route
 
 @HiltViewModel
 class WeightViewModel @Inject constructor(
-    private val preferences: Preferences,
-    private val filterOutDigits: FilterOutDigits
+    private val preferences: Preferences
 ): ViewModel() {
 
     var weight by mutableStateOf("70.0")
@@ -42,6 +39,6 @@ class WeightViewModel @Inject constructor(
             return@launch
         }
         preferences.saveWeight(weightNumber)
-        _uiEvent.send(UiEvent.Navigate(Route.ACTIVITY_LEVEL))
+        _uiEvent.send(UiEvent.Success)
     }
 }

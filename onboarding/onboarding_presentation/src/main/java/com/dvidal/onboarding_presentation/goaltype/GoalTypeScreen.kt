@@ -22,8 +22,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.dvidal.core.util.UiEvent
 import com.dvidal.core_ui.LocalSpacing
 import com.dvidal.core.R
-import com.dvidal.core.domain.model.ActivityLevel
-import com.dvidal.core.domain.model.Gender
 import com.dvidal.core.domain.model.GoalType
 import com.dvidal.onboarding_presentation.components.ActionButton
 import com.dvidal.onboarding_presentation.components.SelectableButton
@@ -31,12 +29,12 @@ import com.dvidal.onboarding_presentation.components.SelectableButton
 @Composable
 fun GoalTypeScreen(
     viewModel: GoalTypeViewModel = hiltViewModel(),
-    onNavigate: (UiEvent.Navigate) -> Unit
+    onNextClick: () -> Unit
 ) {
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when(event) {
-                is UiEvent.Navigate -> onNavigate.invoke(event)
+                is UiEvent.Success -> onNextClick.invoke()
                 else -> Unit
             }
         }
